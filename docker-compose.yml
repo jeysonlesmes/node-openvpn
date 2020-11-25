@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  openvpn-client:
+    container_name: vpn-client
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: jeysonlesmes/node-openvpn
+    stdin_open: true
+    tty: true
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - "/dev/net/tun:/dev/net/tun"
